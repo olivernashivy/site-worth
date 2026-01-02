@@ -35,7 +35,7 @@ const body = `
 
         <!-- 1. Estimated Website Value (Above the fold) -->
         <section class="section">
-            <h2>💰 Estimated Website Value</h2>
+            <h2>Estimated Website Value</h2>
             <div class="value-card highlight">
                 <div class="value-main">
                     <span class="value-label">Estimated Worth</span>
@@ -61,7 +61,7 @@ const body = `
 
         <!-- 2. Traffic Overview -->
         <section class="section">
-            <h2>📊 Traffic Overview</h2>
+            <h2>Traffic Overview</h2>
             <div class="stats-grid">
                 <div class="stat-card">
                     <span class="stat-label">Monthly Visitors</span>
@@ -85,7 +85,7 @@ const body = `
 
         <!-- 3. Monetization Potential -->
         <section class="section">
-            <h2>💸 Monetization Potential</h2>
+            <h2>Monetization Potential</h2>
             <div class="monetization-card">
                 <div class="monetization-header">
                     <span class="potential-badge potential-${result.monetization.potential.toLowerCase()}">${result.monetization.potential} Potential</span>
@@ -102,7 +102,7 @@ const body = `
 
         <!-- 4. Domain & Technical Info -->
         <section class="section">
-            <h2>🔧 Domain & Technical Info</h2>
+            <h2>Domain & Technical Info</h2>
             <div class="info-grid-result">
                 <div class="info-item">
                     <span class="info-label">Domain Name</span>
@@ -114,7 +114,7 @@ const body = `
                 </div>
                 <div class="info-item">
                     <span class="info-label">HTTPS Status</span>
-                    <span class="info-value">${result.domainInfo.httpsEnabled ? '✓ Enabled' : '✗ Disabled'}</span>
+                    <span class="info-value">${result.domainInfo.httpsEnabled ? 'Enabled' : 'Disabled'}</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Server Location</span>
@@ -129,7 +129,7 @@ const body = `
 
         <!-- 5. Final Verdict -->
         <section class="section verdict-section">
-            <h2>📋 Final Verdict</h2>
+            <h2>Final Verdict</h2>
             <div class="verdict-card">
                 <p>${result.verdict}</p>
             </div>

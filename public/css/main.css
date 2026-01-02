@@ -80,9 +80,9 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(to bottom, #1e40af 0%, #2563eb 100%);
     color: white;
-    padding: 4rem 0;
+    padding: 3rem 0;
     text-align: center;
 }
 
@@ -148,10 +148,10 @@ body {
 }
 
 .feature {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
     padding: 1.5rem;
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .feature h3 {
@@ -308,11 +308,11 @@ body {
 
 /* Value Card */
 .value-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(to bottom, #1e40af 0%, #2563eb 100%);
     color: white;
     padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow-lg);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
 }
 
 .value-main {
@@ -430,22 +430,13 @@ body {
 }
 
 .monetization-methods ul {
-    list-style: none;
+    list-style: disc;
     margin-top: 0.5rem;
+    padding-left: 1.5rem;
 }
 
 .monetization-methods li {
     padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.monetization-methods li:before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--secondary-color);
-    font-weight: bold;
 }
 
 /* Info Grid Result */
