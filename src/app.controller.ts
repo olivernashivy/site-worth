@@ -22,6 +22,7 @@ export class AppController {
       title: 'About Us - Website Worth Calculator',
       description: 'Learn more about our website valuation methodology and how we calculate website worth.',
       canonicalUrl: `${process.env.SITE_URL}/about`,
+      showSearch: true,
     };
   }
 
@@ -32,6 +33,7 @@ export class AppController {
       title: 'How It Works - Website Worth Calculator',
       description: 'Understand how our website worth calculator estimates traffic, revenue, and website value.',
       canonicalUrl: `${process.env.SITE_URL}/how-it-works`,
+      showSearch: true,
     };
   }
 
@@ -42,6 +44,7 @@ export class AppController {
       title: 'Privacy Policy - Website Worth Calculator',
       description: 'Our privacy policy and data handling practices.',
       canonicalUrl: `${process.env.SITE_URL}/privacy`,
+      showSearch: true,
     };
   }
 
@@ -52,6 +55,7 @@ export class AppController {
       title: 'Terms of Service - Website Worth Calculator',
       description: 'Terms and conditions for using our website worth calculator.',
       canonicalUrl: `${process.env.SITE_URL}/terms`,
+      showSearch: true,
     };
   }
 }

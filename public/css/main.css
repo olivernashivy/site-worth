@@ -73,6 +73,48 @@ body {
     color: var(--primary-color);
 }
 
+/* Global Search Bar */
+.search-bar-global {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+}
+
+.search-bar-global form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-input-global {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    outline: none;
+}
+
+.search-input-global:focus {
+    border-color: var(--primary-color);
+}
+
+.search-button-global {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.search-button-global:hover {
+    background-color: var(--primary-dark);
+}
+
 /* Main Content */
 .main {
     min-height: calc(100vh - 200px);
@@ -202,6 +244,52 @@ body {
     color: var(--primary-color);
 }
 
+/* Top Sites */
+.top-sites {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: var(--bg-gray);
+    border-radius: 8px;
+}
+
+.top-sites h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.top-sites > p {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.top-sites-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.top-site-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--primary-color);
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.top-site-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
 /* FAQ */
 .faq {
     margin-top: 3rem;
@@ -288,6 +376,13 @@ body {
 
 .result-subtitle {
     color: var(--text-secondary);
+}
+
+.last-checked {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 /* Section */
@@ -684,6 +779,10 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .top-sites-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .info-grid-result {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -700,5 +799,9 @@ body {
 @media (min-width: 768px) {
     .container {
         padding: 0 40px;
+    }
+
+    .top-sites-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }

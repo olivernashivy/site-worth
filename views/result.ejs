@@ -31,6 +31,13 @@ const body = `
         <div class="result-header">
             <h1>${result.domain}</h1>
             <p class="result-subtitle">Website Worth Analysis Report</p>
+            <p class="last-checked">Last checked: ${new Date(result.calculatedAt).toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            })}</p>
         </div>
 
         <!-- 1. Estimated Website Value (Above the fold) -->

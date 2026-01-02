@@ -44,6 +44,38 @@
         </div>
     </header>
 
+    <!-- Search Bar for non-homepage pages -->
+    <% if (typeof showSearch !== 'undefined' && showSearch) { %>
+    <div class="search-bar-global">
+        <div class="container">
+            <form id="globalSearchForm" action="/website-worth/" method="GET" onsubmit="return handleGlobalSearch(event)">
+                <input
+                    type="text"
+                    id="globalSearchInput"
+                    name="domain"
+                    class="search-input-global"
+                    placeholder="Enter domain name to check worth..."
+                    required
+                >
+                <button type="submit" class="search-button-global">Check Worth</button>
+            </form>
+        </div>
+    </div>
+    <script>
+    function handleGlobalSearch(event) {
+        event.preventDefault();
+        const domain = document.getElementById('globalSearchInput').value.trim();
+        if (domain) {
+            let cleanDomain = domain.replace(/^https?:\/\//, '');
+            cleanDomain = cleanDomain.replace(/^www\./, '');
+            cleanDomain = cleanDomain.replace(/\/$/, '');
+            window.location.href = '/website-worth/' + encodeURIComponent(cleanDomain);
+        }
+        return false;
+    }
+    </script>
+    <% } %>
+
     <!-- Main Content -->
     <main class="main">
         <%- body %>
