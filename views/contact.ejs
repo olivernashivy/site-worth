@@ -1,0 +1,65 @@
+<%
+const body = `
+<div class="static-page">
+    <div class="container">
+        <h1>Contact Us</h1>
+
+        <div class="content">
+            <p>We'd love to hear from you! Whether you have questions, feedback, or need support, feel free to reach out to us.</p>
+
+            <h2>Get in Touch</h2>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>General Inquiries</h3>
+                    <p>For general questions about our website worth calculator and services.</p>
+                    <p><strong>Email:</strong> info@websiteworthcalculator.com</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Technical Support</h3>
+                    <p>Having issues with the calculator? Need technical assistance?</p>
+                    <p><strong>Email:</strong> support@websiteworthcalculator.com</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Business Partnerships</h3>
+                    <p>Interested in partnering with us or advertising opportunities?</p>
+                    <p><strong>Email:</strong> partnerships@websiteworthcalculator.com</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Feedback & Suggestions</h3>
+                    <p>We value your input! Share your ideas to help us improve.</p>
+                    <p><strong>Email:</strong> feedback@websiteworthcalculator.com</p>
+                </div>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <p>Before reaching out, you might find answers to your questions on our <a href="/how-it-works">How It Works</a> page or our main FAQ section on the <a href="/">homepage</a>.</p>
+
+            <h2>Response Time</h2>
+            <p>We strive to respond to all inquiries within 24-48 hours during business days. For urgent technical issues, please include "URGENT" in your email subject line.</p>
+
+            <h2>Office Hours</h2>
+            <p>Our support team is available Monday through Friday, 9:00 AM - 5:00 PM EST.</p>
+
+            <h2>Social Media</h2>
+            <p>Stay updated with the latest features and news:</p>
+            <ul>
+                <li>Follow us on Twitter for updates and tips</li>
+                <li>Connect with us on LinkedIn for business insights</li>
+                <li>Join our community discussions</li>
+            </ul>
+
+            <div class="note-box">
+                <h3>Privacy Notice</h3>
+                <p>Your privacy is important to us. Any information you share with us will be handled according to our <a href="/privacy">Privacy Policy</a>. We will never share your contact information with third parties without your consent.</p>
+            </div>
+        </div>
+    </div>
+</div>
+`;
+%>
+
+<%- include('layout', { title, description, canonicalUrl, ogType: 'website', ogUrl: canonicalUrl, ogTitle: title, ogDescription: description, showSearch, body }) %>

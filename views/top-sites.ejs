@@ -1,0 +1,66 @@
+<%
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function formatValue(num) {
+    if (num >= 1000000000) {
+        return '$' + (num / 1000000000).toFixed(2) + 'B';
+    } else if (num >= 1000000) {
+        return '$' + (num / 1000000).toFixed(2) + 'M';
+    } else {
+        return '$' + formatNumber(num);
+    }
+}
+
+const body = `
+<div class="top-sites-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Top 50 Websites by Worth</h1>
+            <p class="page-description">Explore the most valuable websites on the internet, ranked by estimated worth, traffic, and revenue potential.</p>
+        </div>
+
+        <div class="table-container">
+            <table class="top-sites-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Website</th>
+                        <th>Category</th>
+                        <th>Estimated Worth</th>
+                        <th>Daily Visitors</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${topSites.map(site => `
+                        <tr>
+                            <td class="rank-cell">#${site.rank}</td>
+                            <td class="domain-cell">
+                                <div class="domain-info">
+                                    <img src="${site.favicon}" alt="${site.domain}" class="favicon" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2232%22 height=%2232%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23e5e7eb%22/%3E%3C/svg%3E'">
+                                    <span class="domain-name">${site.domain}</span>
+                                </div>
+                            </td>
+                            <td class="category-cell">${site.category}</td>
+                            <td class="value-cell">${formatValue(site.estimatedValue)}</td>
+                            <td class="visitors-cell">${formatNumber(site.dailyVisitors)}</td>
+                            <td class="action-cell">
+                                <a href="/website-worth/${site.domain}" class="check-btn">Check Worth</a>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-note">
+            <p><strong>Note:</strong> All valuations are estimates based on traffic data, industry metrics, and ranking position. Actual website values may vary significantly based on revenue, brand value, and market conditions.</p>
+        </div>
+    </div>
+</div>
+`;
+%>
+
+<%- include('layout', { title, description, canonicalUrl, ogType: 'website', ogUrl: canonicalUrl, ogTitle: title, ogDescription: description, showSearch, body }) %>

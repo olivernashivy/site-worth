@@ -631,6 +631,181 @@ body {
     letter-spacing: 1px;
 }
 
+/* Top Sites Page */
+.top-sites-page {
+    padding: 3rem 0;
+    background-color: var(--bg-white);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.page-description {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+}
+
+.top-sites-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow-sm);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.top-sites-table thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.top-sites-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.top-sites-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.top-sites-table tbody tr:hover {
+    background-color: var(--bg-gray);
+}
+
+.top-sites-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.top-sites-table td {
+    padding: 1rem;
+    font-size: 0.875rem;
+}
+
+.rank-cell {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.domain-cell {
+    min-width: 200px;
+}
+
+.domain-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.favicon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.domain-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.category-cell {
+    color: var(--text-secondary);
+}
+
+.value-cell {
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 1rem;
+}
+
+.visitors-cell {
+    color: var(--text-primary);
+}
+
+.action-cell {
+    text-align: center;
+}
+
+.check-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.check-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.table-note {
+    background-color: var(--bg-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--warning-color);
+}
+
+.table-note p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Contact Page */
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.contact-card {
+    background-color: var(--bg-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.contact-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.contact-card p {
+    margin: 0.5rem 0;
+    color: var(--text-secondary);
+}
+
+.contact-card strong {
+    color: var(--text-primary);
+}
+
 /* Static Pages */
 .static-page {
     padding: 3rem 0;
@@ -781,6 +956,10 @@ body {
 
     .top-sites-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .info-grid-result {
