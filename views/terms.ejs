@@ -1,0 +1,101 @@
+<%
+const body = `
+<div class="static-page">
+    <div class="container">
+        <h1>Terms of Service</h1>
+
+        <div class="content">
+            <p><em>Last Updated: ${new Date().toLocaleDateString()}</em></p>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing and using Website Worth Calculator, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our service.</p>
+
+            <h2>2. Description of Service</h2>
+            <p>Website Worth Calculator provides free website valuation estimates, including:</p>
+            <ul>
+                <li>Estimated website value ranges</li>
+                <li>Traffic analysis and estimates</li>
+                <li>Monetization potential assessment</li>
+                <li>Domain and technical information</li>
+            </ul>
+
+            <h2>3. Nature of Estimates</h2>
+            <p><strong>IMPORTANT:</strong> All valuations provided by our service are estimates only and should not be considered as:</p>
+            <ul>
+                <li>Professional appraisals or financial advice</li>
+                <li>Guaranteed or accurate valuations</li>
+                <li>Binding offers to buy or sell</li>
+                <li>Investment recommendations</li>
+            </ul>
+            <p>Actual website values may vary significantly from our estimates based on numerous factors including market conditions, content quality, revenue history, and more.</p>
+
+            <h2>4. Use of Service</h2>
+            <p>You agree to:</p>
+            <ul>
+                <li>Use the service for lawful purposes only</li>
+                <li>Not attempt to abuse, overload, or disrupt our service</li>
+                <li>Not use automated tools to mass-scrape our data</li>
+                <li>Not misrepresent our estimates as professional appraisals</li>
+            </ul>
+
+            <h2>5. Intellectual Property</h2>
+            <p>All content, features, and functionality of our service are owned by us and protected by copyright, trademark, and other intellectual property laws.</p>
+
+            <h2>6. Disclaimer of Warranties</h2>
+            <p>Our service is provided "AS IS" and "AS AVAILABLE" without warranties of any kind, either express or implied, including but not limited to:</p>
+            <ul>
+                <li>Accuracy or reliability of estimates</li>
+                <li>Fitness for a particular purpose</li>
+                <li>Uninterrupted or error-free operation</li>
+                <li>Completeness of information</li>
+            </ul>
+
+            <h2>7. Limitation of Liability</h2>
+            <p>To the fullest extent permitted by law, we shall not be liable for any:</p>
+            <ul>
+                <li>Direct, indirect, incidental, or consequential damages</li>
+                <li>Loss of profits, revenue, or data</li>
+                <li>Business interruption</li>
+                <li>Decisions made based on our estimates</li>
+            </ul>
+
+            <h2>8. Third-Party Links</h2>
+            <p>Our service may contain links to third-party websites. We are not responsible for the content, privacy practices, or terms of service of third-party sites.</p>
+
+            <h2>9. Advertising</h2>
+            <p>Our free service is supported by advertising. By using our service, you acknowledge that:</p>
+            <ul>
+                <li>Advertisements may be displayed on our pages</li>
+                <li>We may use cookies for targeted advertising</li>
+                <li>Third-party advertisers may collect certain information</li>
+            </ul>
+
+            <h2>10. Changes to Service</h2>
+            <p>We reserve the right to:</p>
+            <ul>
+                <li>Modify or discontinue the service at any time</li>
+                <li>Change our calculation methodology</li>
+                <li>Update these terms without prior notice</li>
+            </ul>
+
+            <h2>11. Indemnification</h2>
+            <p>You agree to indemnify and hold us harmless from any claims, damages, or expenses arising from your use of our service or violation of these terms.</p>
+
+            <h2>12. Governing Law</h2>
+            <p>These terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law provisions.</p>
+
+            <h2>13. Severability</h2>
+            <p>If any provision of these terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+
+            <h2>14. Entire Agreement</h2>
+            <p>These Terms of Service, together with our Privacy Policy, constitute the entire agreement between you and us regarding the use of our service.</p>
+
+            <h2>Contact</h2>
+            <p>For questions about these Terms of Service, please contact us through our website.</p>
+        </div>
+    </div>
+</div>
+`;
+%>
+
+<%- include('layout', { title, description, canonicalUrl, ogType: 'website', ogUrl: canonicalUrl, ogTitle: title, ogDescription: description, body }) %>

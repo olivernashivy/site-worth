@@ -1,0 +1,42 @@
+<%
+const body = `
+<div class="static-page">
+    <div class="container">
+        <h1>About Website Worth Calculator</h1>
+
+        <div class="content">
+            <p>Welcome to Website Worth Calculator, your free and reliable tool for estimating website value, traffic analysis, and monetization potential.</p>
+
+            <h2>Our Mission</h2>
+            <p>We believe that understanding your website's worth should be accessible to everyone. Whether you're a website owner, investor, or curious about the digital marketplace, our tool provides instant insights into website valuation.</p>
+
+            <h2>What We Offer</h2>
+            <ul>
+                <li><strong>Free Website Valuation:</strong> Get instant estimates of any website's market value</li>
+                <li><strong>Traffic Analysis:</strong> Understand monthly visitor and pageview estimates</li>
+                <li><strong>Monetization Insights:</strong> Discover revenue potential and best monetization strategies</li>
+                <li><strong>Technical Information:</strong> Learn about domain age, security, and technology stack</li>
+            </ul>
+
+            <h2>How We Calculate</h2>
+            <p>Our valuation methodology combines multiple factors:</p>
+            <ul>
+                <li>Domain characteristics and age</li>
+                <li>Estimated traffic volume</li>
+                <li>Industry-standard RPM (Revenue Per Mille) metrics</li>
+                <li>Technical factors like HTTPS and CMS</li>
+                <li>Market valuation standards (24-36 months of revenue)</li>
+            </ul>
+
+            <h2>Why Trust Our Estimates?</h2>
+            <p>While no automated tool can provide 100% accurate valuations, our estimates are based on industry-standard methodologies and provide a useful starting point for understanding website value. We always show ranges rather than exact figures to reflect the inherent variability in website valuations.</p>
+
+            <h2>Contact</h2>
+            <p>Have questions or feedback? We'd love to hear from you. This tool is constantly evolving based on user feedback and industry trends.</p>
+        </div>
+    </div>
+</div>
+`;
+%>
+
+<%- include('layout', { title, description, canonicalUrl, ogType: 'website', ogUrl: canonicalUrl, ogTitle: title, ogDescription: description, body }) %>

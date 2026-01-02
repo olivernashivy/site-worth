@@ -1,0 +1,89 @@
+<%
+const body = `
+<div class="static-page">
+    <div class="container">
+        <h1>Privacy Policy</h1>
+
+        <div class="content">
+            <p><em>Last Updated: ${new Date().toLocaleDateString()}</em></p>
+
+            <h2>Introduction</h2>
+            <p>This Privacy Policy explains how Website Worth Calculator ("we", "us", or "our") collects, uses, and protects information when you use our website valuation service.</p>
+
+            <h2>Information We Collect</h2>
+            <h3>Domain Information</h3>
+            <p>When you use our calculator, we collect:</p>
+            <ul>
+                <li>Domain names you search for</li>
+                <li>Search timestamps</li>
+                <li>Calculation results (cached for performance)</li>
+            </ul>
+
+            <h3>Automatically Collected Information</h3>
+            <p>We may automatically collect:</p>
+            <ul>
+                <li>IP address</li>
+                <li>Browser type and version</li>
+                <li>Operating system</li>
+                <li>Referring website</li>
+                <li>Pages visited and time spent</li>
+            </ul>
+
+            <h2>How We Use Information</h2>
+            <p>We use collected information to:</p>
+            <ul>
+                <li>Provide website valuation services</li>
+                <li>Improve our calculation algorithms</li>
+                <li>Analyze usage patterns and trends</li>
+                <li>Maintain and optimize our service</li>
+                <li>Prevent abuse and ensure security</li>
+            </ul>
+
+            <h2>Data Storage and Caching</h2>
+            <p>We cache domain analysis results to improve performance and reduce server load. Cached data is stored temporarily and may be refreshed periodically.</p>
+
+            <h2>Cookies</h2>
+            <p>We may use cookies and similar technologies to:</p>
+            <ul>
+                <li>Remember your preferences</li>
+                <li>Analyze site traffic</li>
+                <li>Serve relevant advertisements</li>
+            </ul>
+            <p>You can control cookies through your browser settings.</p>
+
+            <h2>Third-Party Services</h2>
+            <p>We may use third-party services for:</p>
+            <ul>
+                <li>Analytics (to understand usage patterns)</li>
+                <li>Advertising (to monetize our free service)</li>
+                <li>Domain information lookup</li>
+            </ul>
+            <p>These services may collect information according to their own privacy policies.</p>
+
+            <h2>Data Security</h2>
+            <p>We implement appropriate security measures to protect your information. However, no method of transmission over the Internet is 100% secure.</p>
+
+            <h2>Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access information we hold about you</li>
+                <li>Request correction of inaccurate information</li>
+                <li>Request deletion of your information</li>
+                <li>Opt-out of certain data collection</li>
+            </ul>
+
+            <h2>Children's Privacy</h2>
+            <p>Our service is not directed to individuals under 13. We do not knowingly collect information from children.</p>
+
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy periodically. Changes will be posted on this page with an updated date.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have questions about this Privacy Policy, please contact us through our website.</p>
+        </div>
+    </div>
+</div>
+`;
+%>
+
+<%- include('layout', { title, description, canonicalUrl, ogType: 'website', ogUrl: canonicalUrl, ogTitle: title, ogDescription: description, body }) %>

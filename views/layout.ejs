@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= description %>">
+
+    <!-- SEO Meta Tags -->
+    <title><%= title %></title>
+    <link rel="canonical" href="<%= canonicalUrl %>">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="<%= ogType || 'website' %>">
+    <meta property="og:url" content="<%= ogUrl || canonicalUrl %>">
+    <meta property="og:title" content="<%= ogTitle || title %>">
+    <meta property="og:description" content="<%= ogDescription || description %>">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= title %>">
+    <meta name="twitter:description" content="<%= description %>">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Schema Markup -->
+    <% if (typeof schemaMarkup !== 'undefined') { %>
+    <script type="application/ld+json">
+    <%- schemaMarkup %>
+    </script>
+    <% } %>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="/">Website Worth Calculator</a>
+            </div>
+            <nav class="nav">
+                <a href="/about">About</a>
+                <a href="/how-it-works">How It Works</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <%- body %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Free website worth calculator providing instant estimates of website value, traffic, and monetization potential.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <%= new Date().getFullYear() %> Website Worth Calculator. All rights reserved.</p>
+                <p class="disclaimer">All valuations are estimates and should not be considered as financial advice.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

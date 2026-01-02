@@ -1,0 +1,77 @@
+<%
+const body = `
+<div class="static-page">
+    <div class="container">
+        <h1>How It Works</h1>
+
+        <div class="content">
+            <p>Our Website Worth Calculator uses a comprehensive methodology to estimate website value, traffic, and monetization potential. Here's a detailed breakdown of our process:</p>
+
+            <h2>1. Traffic Estimation</h2>
+            <p>We estimate monthly visitors and pageviews based on several factors:</p>
+            <ul>
+                <li><strong>Domain Extension:</strong> .com domains typically receive more traffic than other extensions</li>
+                <li><strong>Domain Age:</strong> Older domains generally have more established traffic patterns</li>
+                <li><strong>HTTPS Status:</strong> Secure websites tend to rank better and receive more traffic</li>
+                <li><strong>Technical Factors:</strong> Server location, CMS, and other technical elements</li>
+            </ul>
+            <p>We provide traffic ranges (low to high estimates) to reflect the variability in actual traffic patterns.</p>
+
+            <h2>2. Revenue Calculation</h2>
+            <p>Our revenue estimates use industry-standard RPM (Revenue Per Mille) metrics:</p>
+            <ul>
+                <li><strong>RPM Range:</strong> $1-$15 per 1,000 pageviews depending on traffic quality</li>
+                <li><strong>Monthly Revenue:</strong> (Monthly Pageviews ÷ 1,000) × RPM</li>
+                <li><strong>Daily Revenue:</strong> Monthly Revenue ÷ 30</li>
+            </ul>
+            <p>Higher traffic websites typically command higher RPM rates due to better advertising opportunities.</p>
+
+            <h2>3. Website Value Assessment</h2>
+            <p>Website value is calculated using the industry-standard multiple method:</p>
+            <ul>
+                <li><strong>Formula:</strong> Website Value = Monthly Revenue × 24-36 months</li>
+                <li><strong>Why 24-36 months?</strong> This is the standard range used by website brokers and marketplaces</li>
+                <li><strong>Value Range:</strong> We show both conservative (24×) and optimistic (36×) estimates</li>
+            </ul>
+
+            <h2>4. Monetization Potential</h2>
+            <p>We assess monetization potential based on traffic volume:</p>
+            <ul>
+                <li><strong>Low Potential:</strong> Under 20,000 monthly visitors</li>
+                <li><strong>Medium Potential:</strong> 20,000-100,000 monthly visitors</li>
+                <li><strong>High Potential:</strong> Over 100,000 monthly visitors</li>
+            </ul>
+            <p>We also recommend the best monetization methods based on your site's characteristics.</p>
+
+            <h2>5. Domain & Technical Analysis</h2>
+            <p>We gather technical information about the domain:</p>
+            <ul>
+                <li><strong>Domain Age:</strong> Estimated based on domain characteristics</li>
+                <li><strong>HTTPS Status:</strong> Checked in real-time</li>
+                <li><strong>CMS Detection:</strong> Identifies popular content management systems</li>
+                <li><strong>Server Location:</strong> Geographic server location</li>
+            </ul>
+
+            <h2>Important Notes</h2>
+            <div class="note-box">
+                <h3>About Accuracy</h3>
+                <p>Our estimates are based on general industry metrics and domain characteristics. Actual values can vary significantly based on:</p>
+                <ul>
+                    <li>Content quality and niche</li>
+                    <li>Audience engagement and demographics</li>
+                    <li>Actual revenue and monetization strategy</li>
+                    <li>Backlink profile and SEO performance</li>
+                    <li>Brand value and reputation</li>
+                </ul>
+                <p>Always conduct thorough due diligence before making business decisions based on these estimates.</p>
+            </div>
+
+            <h2>Get Started</h2>
+            <p><a href="/" class="cta-link">Try our calculator now</a> and discover your website's potential value in seconds!</p>
+        </div>
+    </div>
+</div>
+`;
+%>
+
+<%- include('layout', { title, description, canonicalUrl, ogType: 'website', ogUrl: canonicalUrl, ogTitle: title, ogDescription: description, body }) %>

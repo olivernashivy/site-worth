@@ -1,0 +1,110 @@
+<%
+const body = `
+<div class="hero">
+    <div class="container">
+        <h1 class="hero-title">Website Worth Calculator</h1>
+        <p class="hero-subtitle">Discover your website's value, traffic potential, and monetization opportunities - completely free</p>
+
+        <div class="search-box">
+            <form id="domainForm" action="/website-worth/" method="GET" onsubmit="return handleSubmit(event)">
+                <input
+                    type="text"
+                    id="domainInput"
+                    name="domain"
+                    class="search-input"
+                    placeholder="Enter domain name (e.g., example.com)"
+                    required
+                    pattern="[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?\.[a-zA-Z]{2,}"
+                >
+                <button type="submit" class="search-button">Calculate Worth</button>
+            </form>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>💰 Website Value</h3>
+                <p>Get instant estimates of your website's market value</p>
+            </div>
+            <div class="feature">
+                <h3>📊 Traffic Analysis</h3>
+                <p>Understand your monthly visitors and pageviews</p>
+            </div>
+            <div class="feature">
+                <h3>💸 Revenue Potential</h3>
+                <p>Discover monetization opportunities and earning potential</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section">
+    <div class="container">
+        <h2>How It Works</h2>
+        <p>Our website worth calculator analyzes multiple factors to provide you with comprehensive insights:</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Traffic Estimation</h3>
+                <p>We estimate monthly visitors and pageviews based on domain characteristics, age, and technical factors.</p>
+            </div>
+            <div class="info-card">
+                <h3>Revenue Calculation</h3>
+                <p>Using industry-standard RPM (Revenue Per Mille) metrics, we calculate potential advertising revenue.</p>
+            </div>
+            <div class="info-card">
+                <h3>Value Assessment</h3>
+                <p>Website value is calculated as 24-36 months of potential monthly revenue, following industry standards.</p>
+            </div>
+            <div class="info-card">
+                <h3>Monetization Insights</h3>
+                <p>Get recommendations on the best monetization methods based on your traffic and niche.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>How accurate are these estimates?</h3>
+                <p>Our estimates provide a general range based on industry averages. Actual values may vary based on specific factors like niche, audience quality, and monetization strategy.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is this service free?</h3>
+                <p>Yes! Our website worth calculator is completely free to use with no registration required.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What factors affect website value?</h3>
+                <p>Key factors include traffic volume, domain age, content quality, backlinks, revenue generation, and growth potential.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I use this for selling my website?</h3>
+                <p>Our estimates provide a useful starting point, but we recommend getting a professional appraisal for actual sales transactions.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function handleSubmit(event) {
+    event.preventDefault();
+    const domain = document.getElementById('domainInput').value.trim();
+    if (domain) {
+        // Remove protocol if present
+        let cleanDomain = domain.replace(/^https?:\\/\\//, '');
+        // Remove www if present
+        cleanDomain = cleanDomain.replace(/^www\\./, '');
+        // Remove trailing slash
+        cleanDomain = cleanDomain.replace(/\\/$/, '');
+
+        window.location.href = '/website-worth/' + encodeURIComponent(cleanDomain);
+    }
+    return false;
+}
+</script>
+`;
+%>
+
+<%- include('layout', { title, description, canonicalUrl, ogType: 'website', ogUrl: canonicalUrl, ogTitle: title, ogDescription: description, body }) %>
