@@ -1,9 +1,13 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ValuationService } from './valuation/valuation.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly valuationService: ValuationService,
+  ) {}
 
   @Get()
   @Render('index')
@@ -61,8 +65,8 @@ export class AppController {
 
   @Get('top-sites')
   @Render('top-sites')
-  getTopSites() {
-    const topSites = this.generateTopSitesData();
+  async getTopSites() {
+    const topSites = await this.generateTopSitesData();
     return {
       title: 'Top 50 Websites by Worth - Website Rankings',
       description: 'Explore the top 50 most valuable websites ranked by estimated worth, traffic, and revenue.',
@@ -83,7 +87,7 @@ export class AppController {
     };
   }
 
-  private generateTopSitesData() {
+  private async generateTopSitesData() {
     const sites = [
       { rank: 1, domain: 'google.com', category: 'Search Engine' },
       { rank: 2, domain: 'youtube.com', category: 'Video Streaming' },
@@ -137,18 +141,34 @@ export class AppController {
       { rank: 50, domain: 'vimeo.com', category: 'Video Platform' },
     ];
 
-    // Calculate estimated worth based on rank (simplified)
-    return sites.map((site) => {
-      const baseValue = 100000000000; // $100B for rank 1
-      const estimatedValue = Math.round(baseValue / Math.pow(site.rank, 1.5));
-      const dailyVisitors = Math.round(5000000000 / Math.pow(site.rank, 1.2));
+    // Use ValuationService for consistent pricing with detail pages
+    const topSitesData = await Promise.all(
+      sites.map(async (site) => {
+        try {
+          const result = await this.valuationService.calculateWebsiteWorth(site.domain);
 
-      return {
-        ...site,
-        estimatedValue,
-        dailyVisitors,
-        favicon: `https://www.google.com/s2/favicons?domain=${site.domain}&sz=32`,
-      };
-    });
+          return {
+            ...site,
+            estimatedValue: Math.round((result.value.estimatedValue.low + result.value.estimatedValue.high) / 2),
+            dailyVisitors: Math.round((result.traffic.monthlyVisitors.low + result.traffic.monthlyVisitors.high) / 2 / 30),
+            favicon: `https://www.google.com/s2/favicons?domain=${site.domain}&sz=32`,
+          };
+        } catch (error) {
+          // Fallback to simplified calculation if service fails
+          const baseValue = 100000000000;
+          const estimatedValue = Math.round(baseValue / Math.pow(site.rank, 1.5));
+          const dailyVisitors = Math.round(5000000000 / Math.pow(site.rank, 1.2));
+
+          return {
+            ...site,
+            estimatedValue,
+            dailyVisitors,
+            favicon: `https://www.google.com/s2/favicons?domain=${site.domain}&sz=32`,
+          };
+        }
+      })
+    );
+
+    return topSitesData;
   }
 }
