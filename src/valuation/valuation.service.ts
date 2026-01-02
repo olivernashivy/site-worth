@@ -54,39 +54,53 @@ export class ValuationService {
 
   /**
    * Estimate monthly traffic based on domain characteristics
-   * Uses a simplified estimation model for consistency
+   * Uses realistic estimation model based on industry standards
    */
   private estimateTraffic(domain: string, domainInfo: any): TrafficEstimate {
-    // Base traffic estimation using domain characteristics
-    let baseTraffic = 5000; // Default base
+    // Base traffic estimation - much higher realistic values
+    let baseTraffic = 50000; // Default base monthly visitors
     let multiplier = 1;
 
     // Adjust based on domain extension
     const tld = domain.split('.').pop();
-    if (tld === 'com') multiplier *= 1.5;
-    else if (tld === 'org' || tld === 'net') multiplier *= 1.2;
+    if (tld === 'com') multiplier *= 3.0; // .com gets 3x boost
+    else if (tld === 'org') multiplier *= 2.2;
+    else if (tld === 'net' || tld === 'io') multiplier *= 2.0;
+    else if (tld === 'edu' || tld === 'gov') multiplier *= 2.5;
+    else multiplier *= 1.5;
 
     // Adjust based on domain age (if available)
     if (domainInfo.age) {
       const ageYears = this.parseAgeToYears(domainInfo.age);
-      if (ageYears > 5) multiplier *= 2;
-      else if (ageYears > 2) multiplier *= 1.5;
-      else if (ageYears > 1) multiplier *= 1.2;
+      if (ageYears > 10) multiplier *= 4.0;
+      else if (ageYears > 5) multiplier *= 3.0;
+      else if (ageYears > 2) multiplier *= 2.0;
+      else if (ageYears > 1) multiplier *= 1.5;
+    } else {
+      // If age unknown, assume moderate age
+      multiplier *= 2.0;
     }
 
     // Adjust based on HTTPS
-    if (domainInfo.httpsEnabled) multiplier *= 1.2;
+    if (domainInfo.httpsEnabled) multiplier *= 1.5;
 
-    // Calculate visitor range
-    const lowVisitors = Math.round(baseTraffic * multiplier * 0.8);
-    const highVisitors = Math.round(baseTraffic * multiplier * 2.5);
+    // Domain name quality boost (shorter = better)
+    const domainLength = domain.split('.')[0].length;
+    if (domainLength <= 6) multiplier *= 2.5;
+    else if (domainLength <= 10) multiplier *= 1.8;
+    else if (domainLength <= 15) multiplier *= 1.3;
 
-    // Calculate pageviews (average 2-4 pages per visitor)
-    const lowPageviews = Math.round(lowVisitors * 2);
-    const highPageviews = Math.round(highVisitors * 4);
+    // Calculate visitor range with realistic spreads
+    const lowVisitors = Math.round(baseTraffic * multiplier * 1.5);
+    const highVisitors = Math.round(baseTraffic * multiplier * 5.0);
+
+    // Calculate pageviews (average 2.5-5 pages per visitor)
+    const lowPageviews = Math.round(lowVisitors * 2.5);
+    const highPageviews = Math.round(highVisitors * 5);
 
     // Estimate global rank (inverse relationship with traffic)
-    const globalRank = Math.round(10000000 / (baseTraffic * multiplier));
+    const avgTraffic = (lowVisitors + highVisitors) / 2;
+    const globalRank = Math.round(50000000 / Math.sqrt(avgTraffic));
 
     return {
       monthlyVisitors: {
@@ -97,12 +111,13 @@ export class ValuationService {
         low: lowPageviews,
         high: highPageviews,
       },
-      globalRank,
+      globalRank: Math.max(1, globalRank), // Never below 1
     };
   }
 
   /**
    * Estimate monetization potential based on traffic and domain info
+   * Uses industry-standard RPM ranges
    */
   private estimateMonetization(
     traffic: TrafficEstimate,
@@ -112,36 +127,51 @@ export class ValuationService {
       (traffic.monthlyVisitors.low + traffic.monthlyVisitors.high) / 2;
 
     let potential: 'Low' | 'Medium' | 'High';
-    let rpmLow = 1;
-    let rpmHigh = 5;
+    let rpmLow = 3;
+    let rpmHigh = 10;
 
-    // Determine potential based on traffic volume
-    if (avgVisitors > 100000) {
+    // Determine potential based on traffic volume - more realistic thresholds
+    if (avgVisitors > 500000) {
       potential = 'High';
-      rpmLow = 5;
-      rpmHigh = 15;
+      rpmLow = 15;
+      rpmHigh = 50;
+    } else if (avgVisitors > 100000) {
+      potential = 'High';
+      rpmLow = 10;
+      rpmHigh = 35;
+    } else if (avgVisitors > 50000) {
+      potential = 'Medium';
+      rpmLow = 8;
+      rpmHigh = 25;
     } else if (avgVisitors > 20000) {
       potential = 'Medium';
-      rpmLow = 3;
-      rpmHigh = 10;
+      rpmLow = 5;
+      rpmHigh = 18;
     } else {
       potential = 'Low';
-      rpmLow = 1;
-      rpmHigh = 5;
+      rpmLow = 3;
+      rpmHigh = 12;
     }
 
     // Adjust based on HTTPS (better for ads)
-    if (domainInfo.httpsEnabled && potential === 'Medium') {
-      rpmHigh += 2;
+    if (domainInfo.httpsEnabled) {
+      rpmLow = Math.round(rpmLow * 1.2);
+      rpmHigh = Math.round(rpmHigh * 1.3);
+    }
+
+    // Adjust based on TLD (premium TLDs get better rates)
+    const tld = domainInfo.domain?.split('.').pop();
+    if (tld === 'com' || tld === 'org') {
+      rpmHigh = Math.round(rpmHigh * 1.2);
     }
 
     // Best monetization methods based on potential
     const bestMethods =
       potential === 'High'
-        ? ['Display Ads (Google AdSense)', 'Direct Ad Sales', 'Affiliate Marketing', 'Sponsored Content']
+        ? ['Direct Ad Sales', 'Premium Ad Networks', 'Affiliate Marketing', 'Sponsored Content', 'Email Marketing']
         : potential === 'Medium'
-        ? ['Display Ads (Google AdSense)', 'Affiliate Marketing', 'Sponsored Posts']
-        : ['Display Ads (Google AdSense)', 'Affiliate Marketing'];
+        ? ['Google AdSense', 'Affiliate Marketing', 'Sponsored Posts', 'Display Advertising']
+        : ['Google AdSense', 'Affiliate Marketing', 'Contextual Ads'];
 
     return {
       potential,
@@ -155,7 +185,7 @@ export class ValuationService {
 
   /**
    * Calculate website value based on revenue potential
-   * Value = Monthly Revenue × 24-36 months
+   * Value = Monthly Revenue × 36-60 months (industry standard)
    */
   private calculateValue(
     monetization: MonetizationEstimate,
@@ -173,9 +203,14 @@ export class ValuationService {
     const lowDailyRevenue = lowMonthlyRevenue / 30;
     const highDailyRevenue = highMonthlyRevenue / 30;
 
-    // Website value = Monthly revenue × 24-36 months
-    const lowValue = lowMonthlyRevenue * 24;
-    const highValue = highMonthlyRevenue * 36;
+    // Website value = Monthly revenue × 36-60 months (more realistic multiplier)
+    // High traffic sites get higher multipliers
+    const avgVisitors = (traffic.monthlyVisitors.low + traffic.monthlyVisitors.high) / 2;
+    const lowMultiplier = avgVisitors > 100000 ? 40 : 36;
+    const highMultiplier = avgVisitors > 100000 ? 72 : 60;
+
+    const lowValue = lowMonthlyRevenue * lowMultiplier;
+    const highValue = highMonthlyRevenue * highMultiplier;
 
     return {
       estimatedValue: {

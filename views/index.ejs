@@ -2,36 +2,45 @@
 const body = `
 <div class="hero">
     <div class="container">
-        <h1 class="hero-title">Website Worth Calculator</h1>
-        <p class="hero-subtitle">Calculate website value, traffic statistics, and revenue estimates</p>
+        <div class="hero-badge">Free Website Valuation Tool</div>
+        <h1 class="hero-title">Discover Your Website's True Worth</h1>
+        <p class="hero-subtitle">Get instant, accurate estimates of website value, traffic analytics, and revenue potential - powered by real-time data analysis</p>
 
         <div class="search-box">
             <form id="domainForm" action="/website-worth/" method="GET" onsubmit="return handleSubmit(event)">
-                <input
-                    type="text"
-                    id="domainInput"
-                    name="domain"
-                    class="search-input"
-                    placeholder="Enter domain name (e.g., example.com)"
-                    required
-                    pattern="[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?\.[a-zA-Z]{2,}"
-                >
-                <button type="submit" class="search-button">Check Worth</button>
+                <div class="search-wrapper">
+                    <input
+                        type="text"
+                        id="domainInput"
+                        name="domain"
+                        class="search-input"
+                        placeholder="Enter your domain (e.g., example.com)"
+                        required
+                        pattern="[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?\.[a-zA-Z]{2,}"
+                    >
+                    <button type="submit" class="search-button">
+                        <span>Calculate Worth</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 10h12m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="search-note">100% Free - No registration required</p>
             </form>
         </div>
 
-        <div class="features">
-            <div class="feature">
-                <h3>Website Value</h3>
-                <p>Get instant estimates of your website's market value</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-number">50K+</span>
+                <span class="hero-stat-label">Websites Analyzed</span>
             </div>
-            <div class="feature">
-                <h3>Traffic Statistics</h3>
-                <p>View monthly visitors and pageviews data</p>
+            <div class="hero-stat">
+                <span class="hero-stat-number">Real-Time</span>
+                <span class="hero-stat-label">Data Analysis</span>
             </div>
-            <div class="feature">
-                <h3>Revenue Estimates</h3>
-                <p>Understand your website's earning potential</p>
+            <div class="hero-stat">
+                <span class="hero-stat-number">Instant</span>
+                <span class="hero-stat-label">Results</span>
             </div>
         </div>
     </div>

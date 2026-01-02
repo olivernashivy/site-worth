@@ -79,8 +79,9 @@ const body = `
                     <span class="stat-value">${formatNumber(result.traffic.monthlyPageviews.low)} - ${formatNumber(result.traffic.monthlyPageviews.high)}</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-label">Global Rank Estimate</span>
-                    <span class="stat-value">#${formatNumber(result.traffic.globalRank || 0)}</span>
+                    <span class="stat-label">Traffic Rank (Global)</span>
+                    <span class="stat-value stat-rank">#${formatNumber(result.traffic.globalRank || 0)}</span>
+                    <span class="stat-note">Similar to Alexa Rank</span>
                 </div>
             </div>
         </section>
